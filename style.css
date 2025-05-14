@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap');
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 5px;
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#auth-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    text-align: right;
+    z-index: 100; /* Ensure it's on top of other content */
+    /* background-color: #f0f0f0; /* Removed */
+    /* margin-bottom: 15px; /* Removed */
+}
+
+#auth-container button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+#user-profile span {
+    margin-right: 10px;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-content button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+/* Scores Modal Specific Styles */
+#scores-modal .modal-content {
+    max-width: 600px; /* Wider for scores display */
+}
+
+#personal-bests-container h3,
+#all-scores-container h3 {
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#personal-bests-content p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+#personal-bests-content strong {
+    color: #764ba2;
+}
+
+#all-scores-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    max-height: 300px; /* Scrollable if many scores */
+    overflow-y: auto; /* Add scroll for overflow */
+}
+
+#all-scores-content li {
+    padding: 8px 5px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+}
+
+#all-scores-content li:last-child {
+    border-bottom: none;
+}
+
+#all-scores-content .score-item span {
+    margin-right: 10px;
+}
+
+#all-scores-content .score-item .score-difficulty {
+    display: inline-block;
+    width: 60px; /* For alignment */
+    text-transform: capitalize;
+}
+
+#all-scores-content .score-item .score-date {
+    color: #777;
+    font-size: 0.85em;
+}
+
+#scores-modal hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+/* Achievements Section Styles */
+#achievements-container h3 {
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#achievements-container h3 .fa-trophy {
+    margin-right: 8px;
+    color: #f9a825; /* Gold color for trophy */
+}
+
+#achievements-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow badges to wrap to next line */
+    gap: 15px; /* Spacing between badges */
+    padding: 10px 0;
+}
+
+.achievement-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-align: center;
+    flex-basis: calc(33.333% - 20px); /* Aim for 3 per row, adjust as needed */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.achievement-item.unlocked {
+    background-color: #e0f2f1; /* A light teal for unlocked */
+    border-color: #76c7c0;
+}
+
+.achievement-item.unlocked .achievement-icon {
+    color: #26a69a; /* Darker teal for icon */
+}
+
+.achievement-item .achievement-icon {
+    font-size: 2em; /* Placeholder, adjust if using actual icons */
+    color: #aaa; /* Grey for locked icons */
+    margin-bottom: 5px;
+}
+
+.achievement-item h4 {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.achievement-item p {
+    font-size: 0.8em;
+    color: #666;
+    margin: 0;
+}
+
+/* Ensure My Scores button fits with others */
+#my-scores-btn {
+    /* Inherits from #auth-container button, add specific if needed */
+    /* e.g., background-color: #5cb85c; color: white; */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    transition: background-color 0.5s ease;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    animation: fadeIn 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin-bottom: 15px; /* Adjusted margin */
+    font-size: 2.5em;
+}
+
+.difficulty-selector {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.difficulty-selector label {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.difficulty-selector input[type="radio"] {
+    display: none; /* Hide the actual radio button */
+}
+
+.difficulty-selector input[type="radio"]:checked + label {
+    background-color: #764ba2;
+    color: #fff;
+    border-color: #764ba2;
+}
+
+.difficulty-selector label:hover {
+    background-color: #f0e9f7;
+}
+
+.difficulty-selector input[type="radio"]:checked + label:hover {
+    background-color: #5a3782; /* Darker shade on hover when selected */
+}
+
+#text-to-type {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 70px;
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #555;
+    background-color: #f9f9f9;
+}
+
+#text-to-type span {
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#text-to-type span.correct {
+    color: #28a745;
+    font-weight: bold;
+}
+
+#text-to-type span.incorrect {
+    color: #dc3545;
+    background-color: #f8d7da;
+    text-decoration: underline;
+    text-decoration-color: #dc3545;
+}
+
+#text-to-type span.current-char {
+    background-color: #764ba2;
+    color: #fff;
+    border-radius: 2px;
+    padding: 0.1em 0;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { background-color: #764ba2; color: #fff; }
+    50% { background-color: transparent; color: inherit; }
+}
+
+textarea#user-input {
+    width: calc(100% - 22px); /* Account for padding and border */
+    margin-bottom: 25px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    line-height: 1.6;
+    resize: none; /* Disable textarea resizing */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea#user-input:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 8px rgba(118, 75, 162, 0.3);
+    outline: none;
+}
+
+textarea#user-input.input-error {
+    border-color: #dc3545;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.4);
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    padding: 15px 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.stat {
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat label {
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.stat span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #764ba2;
+}
+
+button#restart-btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background-color: #764ba2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 25px; /* Increased space above the controls */
+    margin-bottom: 10px; /* Space below controls */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 15px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .stat {
+        font-size: 1.1em;
+    }
+    #text-to-type {
+        font-size: 1em;
+        min-height: 60px;
+    }
+    textarea#user-input {
+        font-size: 0.95em;
+    }
+    button#restart-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
+
